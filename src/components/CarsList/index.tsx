@@ -4,7 +4,7 @@ import { Button } from "../Button";
 export function CarsList() {
   return (
     <main className="mx-auto max-w-6xl space-y-12 px-4 pb-48 pt-6 lg:px-0">
-      <h2 className="text-xl font-semibold text-zinc-900">
+      <h2 className="text-xl font-semibold text-zinc-900 lg:px-4">
         Escolha seu veículo
       </h2>
       <div className="grid place-items-center gap-y-8 md:grid-cols-2 lg:grid-cols-3 ">
