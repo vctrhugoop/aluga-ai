@@ -4,7 +4,7 @@ import { Button } from "../Button";
 
 export function Header() {
   return (
-    <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 lg:px-0">
+    <header className="sticky top-0 mx-auto flex h-24 w-full max-w-6xl items-center justify-between bg-white px-4 py-6 lg:px-0">
       <a href="/" className="w-36">
         <img src={Logo} />
       </a>
