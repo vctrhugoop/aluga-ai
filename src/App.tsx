@@ -1,10 +1,11 @@
 import { Header } from "./components/Header";
 
 import HeroIllustration from "./assets/hero-illustration.svg";
+import { Footer } from "./components/Footer";
 
 export function App() {
   return (
-    <div className="mx-auto min-h-screen max-w-6xl">
+    <div className="relativa mx-auto min-h-screen max-w-6xl">
       <Header />
       <section className="mx-auto my-9 flex max-w-6xl items-center justify-between px-4 py-6 lg:px-0">
         <div className="space-y-2">
@@ -20,6 +21,7 @@ export function App() {
           <img src={HeroIllustration} />
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
