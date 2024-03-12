@@ -13,7 +13,7 @@ export const cars = [
     category: "Sedan Econômico",
     price: 88.96,
     imageURL:
-      "https://utfs.io/f/20882a69-caf6-4d2f-bbb8-bafcbe765628-1my8qj.png",
+      "https://utfs.io/f/3123bd4b-1107-4be8-999a-091cfb479f80-1my8qj.webp",
   },
   {
     id: crypto.randomUUID(),
@@ -21,7 +21,7 @@ export const cars = [
     category: "Hatch Automático",
     price: 101.36,
     imageURL:
-      "https://utfs.io/f/3ded4333-d62b-45cc-92ef-0f46bfa829a4-217pq.png",
+      "https://utfs.io/f/d6b36a7f-d8da-4882-b26a-af76c8247047-217pq.png",
   },
   {
     id: crypto.randomUUID(),

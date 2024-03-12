@@ -22,7 +22,8 @@ export function CarsList() {
               <div>
                 <p className="text-xs text-zinc-500">A partir de</p>
                 <strong className="text-2xl">
-                  {car.price} <span className="text-xs font-normal">/dia</span>
+                  R${car.price}{" "}
+                  <span className="text-xs font-normal">/dia</span>
                 </strong>
               </div>
               <Button>Quero esse</Button>
