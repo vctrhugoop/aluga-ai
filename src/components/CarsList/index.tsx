@@ -11,7 +11,7 @@ export function CarsList() {
         {cars.map((car) => (
           <div
             key={car.id}
-            className="flex h-96 w-80 flex-col justify-between rounded-lg border border-zinc-300 p-6"
+            className="flex h-96 w-80 flex-col justify-between rounded-lg border border-zinc-300 p-6 shadow-md"
           >
             <div className="flex flex-col">
               <strong>{car.name}</strong>
