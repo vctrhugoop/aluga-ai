@@ -1,11 +1,11 @@
 export const cars = [
   {
     id: crypto.randomUUID(),
-    name: "Fiat Argo",
+    name: "Renault Kwid",
     category: "Hatch Econômico",
     price: 85.26,
     imageURL:
-      "https://utfs.io/f/10917c23-f0f0-412f-84a2-e04ca9a7678b-1sct5.png",
+      "https://utfs.io/f/234c0eb4-4598-4db8-acd1-b59ce2809651-1yufb.webp",
   },
   {
     id: crypto.randomUUID(),
@@ -21,7 +21,7 @@ export const cars = [
     category: "Hatch Automático",
     price: 101.36,
     imageURL:
-      "https://utfs.io/f/d6b36a7f-d8da-4882-b26a-af76c8247047-217pq.png",
+      "https://utfs.io/f/663a9ef6-ff58-4d1c-b8eb-68db895d98ef-217pq.png",
   },
   {
     id: crypto.randomUUID(),
@@ -29,7 +29,7 @@ export const cars = [
     category: "Sedan Automático",
     price: 104.78,
     imageURL:
-      "https://utfs.io/f/aaa38061-c825-43ef-82df-e069069825e0-1uqn1t.png",
+      "https://utfs.io/f/8039436c-e909-4687-8c2c-3c21f6a2a6cf-1uqn1t.png",
   },
   {
     id: crypto.randomUUID(),
@@ -37,7 +37,7 @@ export const cars = [
     category: "SUV",
     price: 131.66,
     imageURL:
-      "https://utfs.io/f/b65f8857-e423-4fa7-b2e0-47ba37e9ffc2-861ji3.png",
+      "https://utfs.io/f/d2ca87d3-a749-481f-a7b7-e0e701d367e0-861ji3.avif",
   },
   {
     id: crypto.randomUUID(),
@@ -45,6 +45,6 @@ export const cars = [
     category: "SUV Plus",
     price: 153.2,
     imageURL:
-      "https://utfs.io/f/770abad9-aba0-49d4-ab75-797f115e15fd-1qexa1.png",
+      "https://utfs.io/f/03a9bb61-99ee-45e3-a912-dc082b5197ce-1qexa1.png",
   },
 ];
