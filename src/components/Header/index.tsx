@@ -8,7 +8,7 @@ export function Header() {
       <a href="/" className="w-36">
         <img src={Logo} />
       </a>
-      <Button>
+      <Button className="flex items-center gap-2">
         <Car size={22} />
         Minhas Reservas
       </Button>
