@@ -1,4 +1,5 @@
 import { cars } from "../../database/cars";
+import { NewBookingCarModel } from "../NewBookingCarModal";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -8,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { Dialog, DialogTrigger } from "../ui/dialog";
 
 export function CarsList() {
   return (
@@ -37,7 +39,13 @@ export function CarsList() {
                   <span className="text-xs font-normal">/dia</span>
                 </strong>
               </div>
-              <Button>Quero esse</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Quero esse</Button>
+                </DialogTrigger>
+
+                <NewBookingCarModel />
+              </Dialog>
             </CardFooter>
           </Card>
         ))}
