@@ -7,7 +7,7 @@ export function Footer() {
         <a
           href="https://github.com/vctrhugoop"
           target="_blank"
-          className="font-bold"
+          className="font-bold hover:underline"
         >
           Victor Oliveira
         </a>
