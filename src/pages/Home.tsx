@@ -4,7 +4,7 @@ import { CarsList } from "../components/CarsList";
 export function Home() {
   return (
     <div className="relativa mx-auto max-w-6xl">
-      <section className="mx-auto my-9 flex max-w-6xl items-center justify-between px-4 py-6 lg:px-4">
+      <section className="mx-auto my-9 flex max-w-6xl items-center justify-between px-4 py-6">
         <div className="space-y-2">
           <h1 className="text-2xl font-bold  lg:text-4xl">
             Desbrave o Caminho da Liberdade
