@@ -46,69 +46,78 @@ export function FormReservation() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <h3 className="flex items-center gap-2 font-semibold">
-          <User size={22} />
-          Dados pessoais
-        </h3>
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  id="name"
-                  placeholder="Nome completo"
-                  type="text"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="E-mail" type="email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phoneNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Celular" type="text" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+        <div className="space-y-4">
+          <h3 className="flex items-center gap-2 font-semibold">
+            <User size={22} />
+            Dados pessoais
+          </h3>
 
-        <h3 className="flex items-center gap-2 font-semibold ">
-          <Car size={22} />
-          Retirada e Devoluçãso
-        </h3>
-        <div className="flex gap-2">
-          <div className="flex flex-1 flex-col space-y-3">
-            <Label htmlFor="withdrawal">Data de retirada</Label>
-            <DatePicker />
-            <SelectHours />
-          </div>
-          <div className="flex flex-1 flex-col space-y-3">
-            <Label htmlFor="devolution">Data de devolução</Label>
-            <DatePicker />
-            <SelectHours />
+          <div className="space-y-2">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      id="name"
+                      placeholder="Nome completo"
+                      type="text"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="E-mail" type="email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Celular" type="text" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
         </div>
+
+        <div className="space-y-4">
+          <h3 className="flex items-center gap-2 font-semibold ">
+            <Car size={22} />
+            Retirada e Devoluçãso
+          </h3>
+
+          <div className="flex space-x-2">
+            <div className="flex flex-1 flex-col space-y-2">
+              <Label htmlFor="withdrawal">Data de retirada</Label>
+              <DatePicker />
+              <SelectHours />
+            </div>
+            <div className="flex flex-1 flex-col space-y-2">
+              <Label htmlFor="devolution">Data de devolução</Label>
+              <DatePicker />
+              <SelectHours />
+            </div>
+          </div>
+        </div>
+
         <Button type="submit" className="w-full">
           Reservar
         </Button>

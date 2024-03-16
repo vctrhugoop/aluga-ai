@@ -9,7 +9,7 @@ import {
 export function NewBookingCarModel() {
   return (
     <DialogContent>
-      <DialogHeader>
+      <DialogHeader className="mb-4">
         <DialogTitle>Confirmar reserva</DialogTitle>
         <DialogDescription>
           Preenchar os campos abaixo para completar sua reserva
