@@ -19,7 +19,7 @@ export function CarsList() {
         {cars.map((car) => (
           <Card
             key={car.id}
-            className="flex h-96 w-80 flex-col justify-between rounded-lg border border-zinc-300 p-6 shadow-md"
+            className="flex h-96 w-80 flex-col justify-between rounded-lg border p-6 shadow-md"
           >
             <CardHeader className="flex flex-col">
               <CardTitle>{car.name}</CardTitle>
