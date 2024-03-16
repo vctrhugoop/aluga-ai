@@ -101,7 +101,7 @@ export function FormReservation() {
         <div className="space-y-4">
           <h3 className="flex items-center gap-2 font-semibold ">
             <Car size={22} />
-            Retirada e Devoluçãso
+            Retirada e Devolução
           </h3>
 
           <div className="flex space-x-2">
