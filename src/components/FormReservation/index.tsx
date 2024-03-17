@@ -6,15 +6,21 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { Car, User } from "@phosphor-icons/react";
-import { DatePicker } from "../DatePicker";
-import { SelectHours } from "../SectectHours";
-import { Label } from "../ui/label";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
+const DATE_REQUIRED_ERROR = "Por favor, selecione um intervalo de datas";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -28,6 +34,17 @@ const formSchema = z.object({
     message:
       "Por favor, insira um número de celular válido contendo apenas dígitos.",
   }),
+  date: z
+    .object(
+      {
+        from: z.date().optional(),
+        to: z.date().optional(),
+      },
+      { required_error: DATE_REQUIRED_ERROR },
+    )
+    .refine((date) => {
+      return !!date.from;
+    }, DATE_REQUIRED_ERROR),
 });
 
 export function FormReservation() {
@@ -37,6 +54,10 @@ export function FormReservation() {
       username: "",
       email: "",
       phoneNumber: "",
+      date: {
+        from: undefined,
+        to: undefined,
+      },
     },
   });
 
@@ -104,18 +125,64 @@ export function FormReservation() {
             Retirada e Devolução
           </h3>
 
-          <div className="flex space-x-2">
-            <div className="flex flex-1 flex-col space-y-2">
-              <Label htmlFor="withdrawal">Data de retirada</Label>
-              <DatePicker />
-              <SelectHours />
-            </div>
-            <div className="flex flex-1 flex-col space-y-2">
-              <Label htmlFor="devolution">Data de devolução</Label>
-              <DatePicker />
-              <SelectHours />
-            </div>
-          </div>
+          <FormField
+            control={form.control}
+            name="date"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      id="date"
+                      variant={"outline"}
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !field.value.from && "text-muted-foreground",
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {field.value.from ? (
+                        field.value.to ? (
+                          <>
+                            {format(
+                              field.value.from,
+                              "dd 'de' MMMM 'de' yyyy",
+                              { locale: ptBR },
+                            )}{" "}
+                            -{" "}
+                            {format(field.value.to, "dd 'de' MMMM 'de' yyyy", {
+                              locale: ptBR,
+                            })}
+                          </>
+                        ) : (
+                          format(field.value.from, "dd 'de' MMMM 'de' yyyy", {
+                            locale: ptBR,
+                          })
+                        )
+                      ) : (
+                        <span>Selecione um intervalo de datas</span>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      initialFocus
+                      mode="range"
+                      defaultMonth={field.value.from}
+                      selected={{ from: field.value.from!, to: field.value.to }}
+                      onSelect={field.onChange}
+                      numberOfMonths={1}
+                      fromDate={new Date()}
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormDescription>
+                  The date you want to add a comment for.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
 
         <Button type="submit" className="w-full">
