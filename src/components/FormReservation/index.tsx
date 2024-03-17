@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormMessage,
@@ -176,9 +175,6 @@ export function FormReservation() {
                     />
                   </PopoverContent>
                 </Popover>
-                <FormDescription>
-                  The date you want to add a comment for.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
