@@ -19,8 +19,6 @@ import { ptBR } from "date-fns/locale";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-const DATE_REQUIRED_ERROR = "Por favor, selecione um intervalo de datas";
-
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Por favor, insira seu nome completo",
@@ -39,11 +37,13 @@ const formSchema = z.object({
         from: z.date().optional(),
         to: z.date().optional(),
       },
-      { required_error: DATE_REQUIRED_ERROR },
+      {
+        required_error: "Por favor, selecione a data de retirada e devolução.",
+      },
     )
     .refine((date) => {
       return !!date.from;
-    }, DATE_REQUIRED_ERROR),
+    }, "Por favor, selecione a data de retirada e devolução."),
 });
 
 export function FormReservation() {
@@ -159,7 +159,7 @@ export function FormReservation() {
                           })
                         )
                       ) : (
-                        <span>Selecione um intervalo de datas</span>
+                        <span>Selecione e data de retirada e devolução</span>
                       )}
                     </Button>
                   </PopoverTrigger>
