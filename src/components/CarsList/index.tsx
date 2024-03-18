@@ -11,7 +11,7 @@ import {
 } from "../ui/card";
 import { Dialog, DialogTrigger } from "../ui/dialog";
 
-export interface NewBookingCar {
+export interface Car {
   id: string;
   name: string;
   category: string;
@@ -19,11 +19,11 @@ export interface NewBookingCar {
   imageURL: string;
 }
 
-interface CarProps {
-  cars: NewBookingCar[];
+export interface CarListProps {
+  cars: Car[];
 }
 
-export function CarsList({ cars }: CarProps) {
+export function CarsList({ cars }: CarListProps) {
   return (
     <main className="mx-auto max-w-6xl space-y-12 px-4 pb-48 pt-6 lg:px-0">
       <h2 className="text-xl font-semibold lg:px-4">Escolha seu veículo</h2>
