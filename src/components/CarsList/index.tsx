@@ -43,7 +43,7 @@ export function CarsList({ cars }: CarProps) {
               <img src={car.imageURL} alt={car.name} className="w-72" />
             </CardContent>
 
-            <CardFooter className="flex items-center justify-between">
+            <CardFooter className="flex items-end justify-between">
               <div>
                 <p className="text-xs text-zinc-500">A partir de</p>
                 <strong className="text-2xl">
