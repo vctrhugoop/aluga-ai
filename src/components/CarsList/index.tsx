@@ -1,4 +1,4 @@
-import { cars } from "../../database/cars";
+import { formatPrice } from "@/utils/formatPrice";
 import { NewBookingCarModel } from "../NewBookingCarModal";
 import { Button } from "../ui/button";
 import {
@@ -11,7 +11,19 @@ import {
 } from "../ui/card";
 import { Dialog, DialogTrigger } from "../ui/dialog";
 
-export function CarsList() {
+export interface NewBookingCar {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  imageURL: string;
+}
+
+interface CarProps {
+  cars: NewBookingCar[];
+}
+
+export function CarsList({ cars }: CarProps) {
   return (
     <main className="mx-auto max-w-6xl space-y-12 px-4 pb-48 pt-6 lg:px-0">
       <h2 className="text-xl font-semibold lg:px-4">Escolha seu veículo</h2>
@@ -35,7 +47,7 @@ export function CarsList() {
               <div>
                 <p className="text-xs text-zinc-500">A partir de</p>
                 <strong className="text-2xl">
-                  R${car.price}{" "}
+                  R${formatPrice(car.price)}{" "}
                   <span className="text-xs font-normal">/dia</span>
                 </strong>
               </div>

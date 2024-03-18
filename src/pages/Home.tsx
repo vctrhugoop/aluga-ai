@@ -1,3 +1,4 @@
+import { cars } from "@/database/cars";
 import HeroIllustration from "../assets/hero-illustration.svg";
 import { CarsList } from "../components/CarsList";
 
@@ -18,7 +19,7 @@ export function Home() {
           <img src={HeroIllustration} />
         </div>
       </section>
-      <CarsList />
+      <CarsList cars={cars} />
     </div>
   );
 }
