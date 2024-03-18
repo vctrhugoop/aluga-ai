@@ -20,16 +20,15 @@ import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Por favor, insira seu nome completo",
+  firstName: z.string().min(2, {
+    message: "Por favor, insira seu Priemiro nome.",
+  }),
+  lastName: z.string().min(2, {
+    message: "Por favor, insira seu Sobrenome.",
   }),
   email: z.string().min(2, {
     message:
-      "Por favor, insira um endereço de e-mail válido. Exemplo: exemplo@email.com",
-  }),
-  phoneNumber: z.string().refine((value) => /^\d{9,11}$/.test(value), {
-    message:
-      "Por favor, insira um número de celular válido contendo apenas dígitos.",
+      "Por favor, insira um endereço de e-mail válido. Exemplo: exemplo@email.com.",
   }),
   date: z
     .object(
@@ -50,9 +49,9 @@ export function FormReservation() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      firstName: "",
+      lastName: "",
       email: "",
-      phoneNumber: "",
       date: {
         from: undefined,
         to: undefined,
@@ -74,23 +73,42 @@ export function FormReservation() {
           </h3>
 
           <div className="space-y-2">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      id="name"
-                      placeholder="Nome completo"
-                      type="text"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="flex gap-2">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormControl>
+                      <Input
+                        id="fisrtName"
+                        placeholder="Nome"
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormControl>
+                      <Input
+                        id="lastName"
+                        placeholder="Sobrenome"
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
               name="email"
@@ -98,18 +116,6 @@ export function FormReservation() {
                 <FormItem>
                   <FormControl>
                     <Input placeholder="E-mail" type="email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="phoneNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Celular" type="text" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -159,7 +165,7 @@ export function FormReservation() {
                           })
                         )
                       ) : (
-                        <span>Selecione e data de retirada e devolução</span>
+                        <span>Selecione a data de retirada e devolução</span>
                       )}
                     </Button>
                   </PopoverTrigger>
