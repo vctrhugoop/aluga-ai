@@ -1,3 +1,6 @@
+// Em NewBookingCarModal.tsx
+
+import { Car } from "../CarsList";
 import { FormBookings } from "../FormBookings";
 import {
   DialogContent,
@@ -6,17 +9,22 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 
-export function NewBookingCarModel() {
+interface NewBookingCarModelProps {
+  car: Car;
+  onSubmit: (formData: any) => void;
+}
+
+export function NewBookingCarModel({ car, onSubmit }: NewBookingCarModelProps) {
   return (
     <DialogContent>
       <DialogHeader className="mb-4">
         <DialogTitle>Confirmar reserva</DialogTitle>
         <DialogDescription>
-          Preenchar os campos abaixo para completar sua reserva
+          Preencha os campos abaixo para completar sua reserva
         </DialogDescription>
       </DialogHeader>
 
-      <FormBookings />
+      <FormBookings car={car} onSubmit={onSubmit} />
     </DialogContent>
   );
 }

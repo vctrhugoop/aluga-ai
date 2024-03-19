@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Car as CarProps } from "../CarsList";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +22,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
-    message: "Por favor, insira seu Priemiro nome.",
+    message: "Por favor, insira seu Primeiro nome.",
   }),
   lastName: z.string().min(2, {
     message: "Por favor, insira seu Sobrenome.",
@@ -45,7 +46,12 @@ const formSchema = z.object({
     }, "Por favor, selecione a data de retirada e devolução."),
 });
 
-export function FormBookings() {
+interface FormBookingsProps {
+  car: CarProps;
+  onSubmit: (formData: any) => void;
+}
+
+export function FormBookings({ car, onSubmit }: FormBookingsProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,13 +65,13 @@ export function FormBookings() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  function handleSubmit(values: z.infer<typeof formSchema>) {
+    onSubmit(values);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-10">
         <div className="space-y-4">
           <h3 className="flex items-center gap-2 font-semibold">
             <User size={22} />
@@ -81,7 +87,7 @@ export function FormBookings() {
                   <FormItem className="w-full">
                     <FormControl>
                       <Input
-                        id="fisrtName"
+                        id="firstName"
                         placeholder="Nome"
                         type="text"
                         {...field}

@@ -1,5 +1,6 @@
 import { useBookingCar } from "@/hooks/useBooking";
 import { formatPrice } from "@/utils/formatPrice";
+import { useState } from "react";
 import { NewBookingCarModel } from "../NewBookingCarModal";
 import { Button } from "../ui/button";
 import {
@@ -26,9 +27,12 @@ export interface CarListProps {
 
 export function CarsList({ cars }: CarListProps) {
   const { addNewBookingCar } = useBookingCar();
+  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
 
-  function handleAddNewBookingCar(car: Car) {
-    addNewBookingCar(car);
+  function handleAddNewBookingCar(formData: any) {
+    if (selectedCar) {
+      addNewBookingCar({ car: selectedCar, formData });
+    }
   }
 
   return (
@@ -60,12 +64,17 @@ export function CarsList({ cars }: CarListProps) {
               </div>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button onClick={() => handleAddNewBookingCar(car)}>
+                  <Button onClick={() => setSelectedCar(car)}>
                     Quero esse
                   </Button>
                 </DialogTrigger>
 
-                <NewBookingCarModel />
+                {selectedCar && (
+                  <NewBookingCarModel
+                    car={selectedCar}
+                    onSubmit={handleAddNewBookingCar}
+                  />
+                )}
               </Dialog>
             </CardFooter>
           </Card>
