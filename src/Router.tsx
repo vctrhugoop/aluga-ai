@@ -9,7 +9,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
+        <Route path="/reservas" element={<MyBookings />} />
       </Route>
     </Routes>
   );

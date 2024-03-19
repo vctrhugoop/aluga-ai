@@ -10,7 +10,7 @@ export function Header() {
         <a href="/" className="w-28">
           <img src={Logo} />
         </a>
-        <NavLink to="/my-bookings">
+        <NavLink to="/reservas">
           <Button className="flex items-center gap-2">
             <Car size={22} />
             Minhas Reservas

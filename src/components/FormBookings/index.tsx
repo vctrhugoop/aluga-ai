@@ -74,7 +74,7 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
 
     toast.success("Reserva realizada com sucesso!");
 
-    navigate("/my-bookings");
+    navigate("/reservas");
   }
 
   return (
