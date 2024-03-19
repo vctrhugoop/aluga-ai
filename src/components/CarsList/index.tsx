@@ -1,3 +1,4 @@
+import { useBookingCar } from "@/hooks/useBooking";
 import { formatPrice } from "@/utils/formatPrice";
 import { NewBookingCarModel } from "../NewBookingCarModal";
 import { Button } from "../ui/button";
@@ -24,6 +25,12 @@ export interface CarListProps {
 }
 
 export function CarsList({ cars }: CarListProps) {
+  const { addNewBookingCar } = useBookingCar();
+
+  function handleAddNewBookingCar(car: Car) {
+    addNewBookingCar(car);
+  }
+
   return (
     <main className="mx-auto max-w-6xl space-y-12 px-4 pb-48 pt-6 lg:px-0">
       <h2 className="text-xl font-semibold lg:px-4">Escolha seu veículo</h2>
@@ -53,7 +60,9 @@ export function CarsList({ cars }: CarListProps) {
               </div>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button>Quero esse</Button>
+                  <Button onClick={() => handleAddNewBookingCar(car)}>
+                    Quero esse
+                  </Button>
                 </DialogTrigger>
 
                 <NewBookingCarModel />
