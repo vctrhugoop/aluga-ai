@@ -45,7 +45,7 @@ const formSchema = z.object({
     }, "Por favor, selecione a data de retirada e devolução."),
 });
 
-export function FormReservation() {
+export function FormBookings() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

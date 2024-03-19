@@ -1,4 +1,4 @@
-import { FormReservation } from "../FormReservation";
+import { FormBookings } from "../FormBookings";
 import {
   DialogContent,
   DialogDescription,
@@ -16,7 +16,7 @@ export function NewBookingCarModel() {
         </DialogDescription>
       </DialogHeader>
 
-      <FormReservation />
+      <FormBookings />
     </DialogContent>
   );
 }
