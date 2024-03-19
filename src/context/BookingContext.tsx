@@ -24,7 +24,7 @@ interface BookingData {
 
 export const BookingCarContext = createContext({} as BookingCarContextProps);
 
-const STOREGE = "alugaai-bookings-v-1-0";
+const STOREGE = "@alugaai:bookings-state-1.0.0";
 
 export function BookingCarContextProvider({
   children,
