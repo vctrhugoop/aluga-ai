@@ -18,6 +18,7 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
@@ -70,6 +71,8 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
 
   function handleSubmit(values: z.infer<typeof formSchema>) {
     onSubmit(values);
+
+    toast.success("Reserva realizada com sucesso!");
 
     navigate("/my-bookings");
   }
