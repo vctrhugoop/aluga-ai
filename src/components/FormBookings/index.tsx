@@ -51,7 +51,7 @@ interface FormBookingsProps {
   onSubmit: (formData: any) => void;
 }
 
-export function FormBookings({ car, onSubmit }: FormBookingsProps) {
+export function FormBookings({ onSubmit }: FormBookingsProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
