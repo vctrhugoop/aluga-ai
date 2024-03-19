@@ -7,6 +7,7 @@ interface BookingData {
     firstName: string;
     lastName: string;
     email: string;
+    protection: string;
     date: {
       from?: Date | undefined;
       to?: Date | undefined;
