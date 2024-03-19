@@ -1,4 +1,5 @@
 import { Car } from "@phosphor-icons/react";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { Button } from "../ui/button";
 
@@ -9,10 +10,12 @@ export function Header() {
         <a href="/" className="w-28">
           <img src={Logo} />
         </a>
-        <Button className="flex items-center gap-2">
-          <Car size={22} />
-          Minhas Reservas
-        </Button>
+        <NavLink to="/my-bookings">
+          <Button className="flex items-center gap-2">
+            <Car size={22} />
+            Minhas Reservas
+          </Button>
+        </NavLink>
       </div>
     </header>
   );

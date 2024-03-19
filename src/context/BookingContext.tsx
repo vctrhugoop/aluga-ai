@@ -1,14 +1,6 @@
 import { Car } from "@/components/CarsList";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-interface BookingCarContextProps {
-  addNewBookingCar: (bookingData: BookingData) => void;
-}
-
-interface BookingCarContextProviderProps {
-  children: ReactNode;
-}
-
 interface BookingData {
   car: Car;
   formData: {
@@ -20,6 +12,15 @@ interface BookingData {
       to?: Date | undefined;
     };
   };
+}
+
+interface BookingCarContextProps {
+  bookingsCars: BookingData[];
+  addNewBookingCar: (bookingData: BookingData) => void;
+}
+
+interface BookingCarContextProviderProps {
+  children: ReactNode;
 }
 
 export const BookingCarContext = createContext({} as BookingCarContextProps);
@@ -49,7 +50,9 @@ export function BookingCarContextProvider({
   }
 
   return (
-    <BookingCarContext.Provider value={{ addNewBookingCar }}>
+    <BookingCarContext.Provider
+      value={{ bookingsCars: bookings, addNewBookingCar }}
+    >
       {children}
     </BookingCarContext.Provider>
   );

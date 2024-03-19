@@ -17,6 +17,7 @@ import { Car, User } from "@phosphor-icons/react";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { useNavigate } from "react-router-dom";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
@@ -65,8 +66,12 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
     },
   });
 
+  const navigate = useNavigate();
+
   function handleSubmit(values: z.infer<typeof formSchema>) {
     onSubmit(values);
+
+    navigate("/my-bookings");
   }
 
   return (
