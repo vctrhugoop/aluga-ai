@@ -9,11 +9,12 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Car, User } from "@phosphor-icons/react";
+import { Car, Shield, User } from "@phosphor-icons/react";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -21,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -33,6 +35,10 @@ const formSchema = z.object({
     message:
       "Por favor, insira um endereço de e-mail válido. Exemplo: exemplo@email.com.",
   }),
+  protection: z.enum(["basic", "premium", "super"], {
+    required_error: "Selecione uma proteção",
+  }),
+
   date: z
     .object(
       {
@@ -60,6 +66,7 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
       firstName: "",
       lastName: "",
       email: "",
+      protection: "basic",
       date: {
         from: undefined,
         to: undefined,
@@ -136,6 +143,50 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
               )}
             />
           </div>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="flex items-center gap-2 font-semibold ">
+            <Shield size={22} />
+            Proteções
+          </h3>
+          <FormField
+            control={form.control}
+            name="protection"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex gap-4"
+                  >
+                    <>
+                      <FormItem className="flex items-center space-x-1">
+                        <FormControl>
+                          <RadioGroupItem value="basic" />
+                        </FormControl>
+                        <FormLabel>Básico</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-1">
+                        <FormControl>
+                          <RadioGroupItem value="premium" />
+                        </FormControl>
+                        <FormLabel>Premium</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-1">
+                        <FormControl>
+                          <RadioGroupItem value="super" />
+                        </FormControl>
+                        <FormLabel>Super</FormLabel>
+                      </FormItem>
+                    </>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
 
         <div className="space-y-4">
