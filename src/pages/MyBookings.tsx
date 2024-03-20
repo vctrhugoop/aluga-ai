@@ -82,10 +82,10 @@ export function MyBookings() {
                         {bookingCar.car.category}
                       </span>
                     </p>
-                    {/* <img
+                    <img
                       src={bookingCar.car.imageURL}
                       className="hidden w-48 lg:block"
-                    /> */}
+                    />
                   </div>
                 </div>
                 <div className="space-y-2 pt-4 lg:pl-4 lg:pt-0">
@@ -150,10 +150,10 @@ export function MyBookings() {
                             bookingCar.formData.date.from,
                             bookingCar.formData.date.to,
                           )}
-                        x R${formatPrice(bookingCar.car.price.toFixed(2))}
+                        x R$ {formatPrice(bookingCar.car.price.toFixed(2))}
                       </span>
-                      <span>
-                        R$
+                      <span className="text-muted-foreground">
+                        R${" "}
                         {formatPrice(
                           calculateBookingTotal(bookingCar).toFixed(2),
                         )}
@@ -161,7 +161,7 @@ export function MyBookings() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold leading-none tracking-tight ">
+                    <h3 className="font-semibold capitalize leading-none tracking-tight">
                       Proteção {bookingCar.formData.protection}
                     </h3>
                     <div className="flex items-end justify-between">
@@ -172,13 +172,13 @@ export function MyBookings() {
                             bookingCar.formData.date.from,
                             bookingCar.formData.date.to,
                           )}
-                        x R$
+                        x R${" "}
                         {formatPrice(
                           calculateProcection(bookingCar).toFixed(2),
                         )}
                       </span>
-                      <span>
-                        R$
+                      <span className="text-muted-foreground">
+                        R${" "}
                         {formatPrice(
                           calculateProtectionTotal(bookingCar).toFixed(2),
                         )}
@@ -193,8 +193,8 @@ export function MyBookings() {
                       <span className="text-sm text-muted-foreground">
                         Taxa Fixa de 12%
                       </span>
-                      <span>
-                        R${formatPrice(calculateTax(bookingCar).toFixed(2))}
+                      <span className="text-muted-foreground">
+                        R$ {formatPrice(calculateTax(bookingCar).toFixed(2))}
                       </span>
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export function MyBookings() {
                       Valor Total
                     </h3>
                     <p className="text-xl font-semibold">
-                      R${formatPrice(calculateTotal(bookingCar).toFixed(2))}
+                      R$ {formatPrice(calculateTotal(bookingCar).toFixed(2))}
                     </p>
                   </div>
                 </div>
