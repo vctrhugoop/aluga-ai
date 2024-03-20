@@ -1,5 +1,5 @@
 import { Car } from "@/components/CarsList";
-import { differenceInDays } from "date-fns";
+import { differenceInDays, isFuture, isPast, isToday } from "date-fns";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface BookingData {
@@ -14,6 +14,8 @@ interface BookingData {
       to?: Date | undefined;
     };
   };
+
+  status: string;
 }
 
 interface BookingCarContextProps {
@@ -25,6 +27,7 @@ interface BookingCarContextProps {
   calculateTotal: (booking: BookingData) => number;
   calculateDateDifference: (from: Date, to: Date) => number;
   calculateProtectionTotal: (booking: BookingData) => number;
+  setStatus: (booking: BookingData) => string;
 }
 
 interface BookingCarContextProviderProps {
@@ -42,14 +45,6 @@ export function BookingCarContextProvider({
     const storedBookings = localStorage.getItem(STOREGE);
     return storedBookings ? JSON.parse(storedBookings) : [];
   });
-
-  useEffect(() => {
-    const storedBookings = localStorage.getItem(STOREGE);
-
-    if (storedBookings) {
-      setBookings(JSON.parse(storedBookings));
-    }
-  }, []);
 
   function addNewBookingCar(bookingData: BookingData) {
     const newBookings = [bookingData, ...bookings];
@@ -107,6 +102,33 @@ export function BookingCarContextProvider({
     );
   }
 
+  function setStatus(booking: BookingData): string {
+    const fromDate = booking.formData.date.from;
+    const toDate = booking.formData.date.to;
+
+    if (!fromDate || !toDate) {
+      return "Indefinido";
+    }
+
+    if (isFuture(fromDate)) {
+      return "Confirmado";
+    } else if (isToday(fromDate)) {
+      return "Em andamento";
+    } else if (isPast(toDate)) {
+      return "Finalizado";
+    } else {
+      return "Indefinido";
+    }
+  }
+
+  useEffect(() => {
+    const storedBookings = localStorage.getItem(STOREGE);
+
+    if (storedBookings) {
+      setBookings(JSON.parse(storedBookings));
+    }
+  }, []);
+
   return (
     <BookingCarContext.Provider
       value={{
@@ -118,6 +140,7 @@ export function BookingCarContextProvider({
         calculateTotal,
         calculateDateDifference,
         calculateProtectionTotal,
+        setStatus,
       }}
     >
       {children}

@@ -8,7 +8,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useBookingCar } from "@/hooks/useBooking";
 import { formatPrice } from "@/utils/formatPrice";
-import { Calendar, Car, User } from "@phosphor-icons/react";
+import { Calendar, Car, Circle, User } from "@phosphor-icons/react";
 import { format } from "date-fns";
 import { useEffect } from "react";
 
@@ -21,6 +21,7 @@ export function MyBookings() {
     calculateTotal,
     calculateDateDifference,
     calculateProtectionTotal,
+    setStatus,
   } = useBookingCar();
 
   useEffect(() => {
@@ -38,11 +39,28 @@ export function MyBookings() {
           <h1 className="text-xl font-bold">Minhas Reservas</h1>
           {bookingsCars.map((bookingCar) => (
             <Card key={bookingCar.car.id} className="p-6">
-              <CardHeader className="space-y-0 text-center">
-                <CardTitle>Código da Reserva</CardTitle>
-                <CardDescription>
-                  {bookingCar.car.id.substring(0, 8).toUpperCase()}
-                </CardDescription>
+              <CardHeader className="flex flex-row justify-between space-y-0">
+                <div>
+                  <CardTitle>Código da Reserva</CardTitle>
+                  <CardDescription>
+                    {bookingCar.car.id.substring(0, 8).toUpperCase()}
+                  </CardDescription>
+                </div>
+                <div className="text-right">
+                  <CardTitle>Status</CardTitle>
+                  <CardDescription className="flex items-center gap-2">
+                    {setStatus(bookingCar) === "Confirmado" ? (
+                      <Circle className="text-lime-600" weight="fill" />
+                    ) : setStatus(bookingCar) === "Em andamento" ? (
+                      <Circle className="text-yellow-600" weight="fill" />
+                    ) : setStatus(bookingCar) === "Finalizado" ? (
+                      <Circle className="text-muted-foreground" weight="fill" />
+                    ) : (
+                      ""
+                    )}
+                    {setStatus(bookingCar)}
+                  </CardDescription>
+                </div>
               </CardHeader>
               <Separator className="my-4" />
               <CardContent className="space-y-4 divide-y-[1px] lg:flex lg:space-x-4 lg:space-y-0 lg:divide-x-[1px] lg:divide-y-0">
