@@ -56,7 +56,7 @@ export function MyBookings() {
                     ) : setStatus(bookingCar) === "Finalizado" ? (
                       <Circle className="text-muted-foreground" weight="fill" />
                     ) : (
-                      ""
+                      "Pendente"
                     )}
                     {setStatus(bookingCar)}
                   </CardDescription>

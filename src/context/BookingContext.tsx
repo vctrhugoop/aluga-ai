@@ -15,7 +15,7 @@ interface BookingData {
     };
   };
 
-  status: string;
+  bookingStatus: string;
 }
 
 interface BookingCarContextProps {
@@ -117,7 +117,7 @@ export function BookingCarContextProvider({
     } else if (isPast(toDate)) {
       return "Finalizado";
     } else {
-      return "Indefinido";
+      return "Pendente";
     }
   }
 

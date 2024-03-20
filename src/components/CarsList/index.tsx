@@ -31,7 +31,11 @@ export function CarsList({ cars }: CarListProps) {
 
   function handleAddNewBookingCar(formData: any) {
     if (selectedCar) {
-      addNewBookingCar({ car: selectedCar, formData });
+      addNewBookingCar({
+        car: selectedCar,
+        formData,
+        bookingStatus: "Pendente",
+      });
     }
   }
 
