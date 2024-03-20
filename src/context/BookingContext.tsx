@@ -95,12 +95,16 @@ export function BookingCarContextProvider({
     return calculateBookingTotal(bookingData) * 0.12;
   }
 
-  function calculateTotal(bookingData: BookingData): number {
-    return calculateBookingTotal(bookingData) + calculateTax(bookingData);
-  }
-
   function calculateDateDifference(from: Date, to: Date): number {
     return differenceInDays(to, from);
+  }
+
+  function calculateTotal(bookingData: BookingData): number {
+    return (
+      calculateBookingTotal(bookingData) +
+      calculateTax(bookingData) +
+      calculateProtectionTotal(bookingData)
+    );
   }
 
   return (
