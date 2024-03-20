@@ -160,7 +160,7 @@ export function MyBookings() {
                         )}
                       </span>
                       <span>
-                        R${" "}
+                        R$
                         {formatPrice(
                           calculateProtectionTotal(bookingCar).toFixed(2),
                         )}
@@ -176,17 +176,16 @@ export function MyBookings() {
                         Taxa Fixa de 12%
                       </span>
                       <span>
-                        {" "}
-                        R$ {formatPrice(calculateTax(bookingCar).toFixed(2))}
+                        R${formatPrice(calculateTax(bookingCar).toFixed(2))}
                       </span>
                     </div>
                   </div>
                   <div className="flex items-end justify-between">
                     <h3 className="flex gap-1 text-xl font-semibold leading-none tracking-tight">
-                      Valor Total{" "}
+                      Valor Total
                     </h3>
-                    <p>
-                      R$ {formatPrice(calculateTotal(bookingCar).toFixed(2))}
+                    <p className="text-xl font-semibold">
+                      R${formatPrice(calculateTotal(bookingCar).toFixed(2))}
                     </p>
                   </div>
                 </div>
