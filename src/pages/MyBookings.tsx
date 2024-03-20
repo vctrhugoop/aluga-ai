@@ -199,10 +199,10 @@ export function MyBookings() {
                     </div>
                   </div>
                   <div className="flex items-end justify-between">
-                    <h3 className="flex gap-1 text-xl font-semibold leading-none tracking-tight">
+                    <h3 className="flex text-xl font-semibold leading-none tracking-tight">
                       Valor Total
                     </h3>
-                    <p className="text-xl font-semibold">
+                    <p className="text-xl font-semibold leading-none tracking-tight">
                       R$ {formatPrice(calculateTotal(bookingCar).toFixed(2))}
                     </p>
                   </div>
