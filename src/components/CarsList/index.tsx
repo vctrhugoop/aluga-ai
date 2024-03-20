@@ -58,7 +58,7 @@ export function CarsList({ cars }: CarListProps) {
               <div>
                 <p className="text-xs text-zinc-500">A partir de</p>
                 <strong className="text-2xl">
-                  R${formatPrice(car.price)}{" "}
+                  R${formatPrice(car.price.toFixed(2))}{" "}
                   <span className="text-xs font-normal">/dia</span>
                 </strong>
               </div>

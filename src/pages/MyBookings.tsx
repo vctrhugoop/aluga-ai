@@ -7,23 +7,31 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useBookingCar } from "@/hooks/useBooking";
+import { formatPrice } from "@/utils/formatPrice";
 import { Calendar, Car, User } from "@phosphor-icons/react";
 import { format } from "date-fns";
 import { useEffect } from "react";
 
 export function MyBookings() {
-  const { bookingsCars } = useBookingCar();
+  const {
+    bookingsCars,
+    calculateBookingTotal,
+    calculateProcection,
+    calculateTax,
+    calculateTotal,
+    calculateDateDifference,
+    calculateProtectionTotal,
+  } = useBookingCar();
 
   useEffect(() => {
     document.title = "AlugaAí - Minhas Reservas";
-  }, []);
+  }, [bookingsCars]);
 
   return (
     <div className="mx-auto max-w-6xl">
       {bookingsCars.length <= 0 ? (
         <div>
           <p>Não há reservas de carros no momento.</p>
-          {/*adicionar um ícone ou imagem aqui*/}
         </div>
       ) : (
         <section className="mx-auto max-w-6xl space-y-4 px-4 pb-48 pt-6">
@@ -91,9 +99,9 @@ export function MyBookings() {
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {bookingCar.formData.date.from && (
-                        <p>
+                        <span>
                           {format(bookingCar.formData.date.from, "dd/MM/yyyy")}
-                        </p>
+                        </span>
                       )}
                     </p>
                   </div>
@@ -104,9 +112,9 @@ export function MyBookings() {
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {bookingCar.formData.date.to && (
-                        <p>
+                        <span>
                           {format(bookingCar.formData.date.to, "dd/MM/yyyy")}
-                        </p>
+                        </span>
                       )}
                     </p>
                   </div>
@@ -118,9 +126,20 @@ export function MyBookings() {
                     </h3>
                     <div className="flex items-end justify-between">
                       <span className="text-sm text-muted-foreground">
-                        5x {bookingCar.car.price}
+                        {bookingCar.formData.date.from &&
+                          bookingCar.formData.date.to &&
+                          calculateDateDifference(
+                            bookingCar.formData.date.from,
+                            bookingCar.formData.date.to,
+                          )}
+                        x R${formatPrice(bookingCar.car.price.toFixed(2))}
                       </span>
-                      <span>{bookingCar.car.price}</span>
+                      <span>
+                        R$
+                        {formatPrice(
+                          calculateBookingTotal(bookingCar).toFixed(2),
+                        )}
+                      </span>
                     </div>
                   </div>
                   <div>
@@ -129,9 +148,23 @@ export function MyBookings() {
                     </h3>
                     <div className="flex items-end justify-between">
                       <span className="text-sm text-muted-foreground">
-                        5x 9,00
+                        {bookingCar.formData.date.from &&
+                          bookingCar.formData.date.to &&
+                          calculateDateDifference(
+                            bookingCar.formData.date.from,
+                            bookingCar.formData.date.to,
+                          )}
+                        x R$
+                        {formatPrice(
+                          calculateProcection(bookingCar).toFixed(2),
+                        )}
                       </span>
-                      <span>9,00</span>
+                      <span>
+                        R${" "}
+                        {formatPrice(
+                          calculateProtectionTotal(bookingCar).toFixed(2),
+                        )}
+                      </span>
                     </div>
                   </div>
                   <div>
@@ -142,14 +175,19 @@ export function MyBookings() {
                       <span className="text-sm text-muted-foreground">
                         Taxa Fixa de 12%
                       </span>
-                      <span>9,00</span>
+                      <span>
+                        {" "}
+                        R$ {formatPrice(calculateTax(bookingCar).toFixed(2))}
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-end justify-between">
                     <h3 className="flex gap-1 text-xl font-semibold leading-none tracking-tight">
                       Valor Total{" "}
                     </h3>
-                    <p>{bookingCar.car.price}</p>
+                    <p>
+                      R$ {formatPrice(calculateTotal(bookingCar).toFixed(2))}
+                    </p>
                   </div>
                 </div>
               </CardContent>

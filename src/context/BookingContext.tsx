@@ -1,4 +1,5 @@
 import { Car } from "@/components/CarsList";
+import { differenceInDays } from "date-fns";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface BookingData {
@@ -18,6 +19,12 @@ interface BookingData {
 interface BookingCarContextProps {
   bookingsCars: BookingData[];
   addNewBookingCar: (bookingData: BookingData) => void;
+  calculateBookingTotal: (booking: BookingData) => number;
+  calculateProcection: (booking: BookingData) => number;
+  calculateTax: (booking: BookingData) => number;
+  calculateTotal: (booking: BookingData) => number;
+  calculateDateDifference: (from: Date, to: Date) => number;
+  calculateProtectionTotal: (booking: BookingData) => number;
 }
 
 interface BookingCarContextProviderProps {
@@ -50,9 +57,64 @@ export function BookingCarContextProvider({
     localStorage.setItem(STOREGE, JSON.stringify(newBookings));
   }
 
+  function calculateBookingTotal(booking: BookingData): number {
+    const fromDate = booking.formData.date.from;
+    const toDate = booking.formData.date.to;
+    if (fromDate && toDate) {
+      const daysDifference = differenceInDays(toDate, fromDate);
+      return daysDifference * booking.car.price;
+    }
+    return 0;
+  }
+
+  function calculateProcection(booking: BookingData): number {
+    switch (booking.formData.protection) {
+      case "basic":
+        return 9.0;
+      case "premium":
+        return 12.0;
+      case "super":
+        return 15.0;
+
+      default:
+        return 9.0;
+    }
+  }
+
+  function calculateProtectionTotal(booking: BookingData): number {
+    const fromDate = booking.formData.date.from;
+    const toDate = booking.formData.date.to;
+    if (fromDate && toDate) {
+      const daysDifference = differenceInDays(toDate, fromDate);
+      return daysDifference * calculateProcection(booking);
+    }
+    return 0;
+  }
+
+  function calculateTax(bookingData: BookingData): number {
+    return calculateBookingTotal(bookingData) * 0.12;
+  }
+
+  function calculateTotal(bookingData: BookingData): number {
+    return calculateBookingTotal(bookingData) + calculateTax(bookingData);
+  }
+
+  function calculateDateDifference(from: Date, to: Date): number {
+    return differenceInDays(to, from);
+  }
+
   return (
     <BookingCarContext.Provider
-      value={{ bookingsCars: bookings, addNewBookingCar }}
+      value={{
+        bookingsCars: bookings,
+        addNewBookingCar,
+        calculateBookingTotal,
+        calculateProcection,
+        calculateTax,
+        calculateTotal,
+        calculateDateDifference,
+        calculateProtectionTotal,
+      }}
     >
       {children}
     </BookingCarContext.Provider>
