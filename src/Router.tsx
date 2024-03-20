@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
 import { Home } from "./pages/Home";
@@ -10,6 +10,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/reservas" element={<MyBookings />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
