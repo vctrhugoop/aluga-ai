@@ -57,6 +57,9 @@ export function BookingCarContextProvider({
     const toDate = booking.formData.date.to;
     if (fromDate && toDate) {
       const daysDifference = differenceInDays(toDate, fromDate);
+      if (daysDifference <= 0) {
+        return booking.car.price;
+      }
       return daysDifference * booking.car.price;
     }
     return 0;
@@ -81,6 +84,9 @@ export function BookingCarContextProvider({
     const toDate = booking.formData.date.to;
     if (fromDate && toDate) {
       const daysDifference = differenceInDays(toDate, fromDate);
+      if (daysDifference <= 0) {
+        return calculateProcection(booking);
+      }
       return daysDifference * calculateProcection(booking);
     }
     return 0;
@@ -91,6 +97,9 @@ export function BookingCarContextProvider({
   }
 
   function calculateDateDifference(from: Date, to: Date): number {
+    if (differenceInDays(to, from) <= 0) {
+      return 1;
+    }
     return differenceInDays(to, from);
   }
 
@@ -110,9 +119,13 @@ export function BookingCarContextProvider({
       return "Indefinido";
     }
 
-    if (isFuture(fromDate)) {
+    if (isFuture(fromDate) && isFuture(toDate)) {
       return "Confirmado";
-    } else if (isToday(fromDate)) {
+    } else if (
+      (isToday(fromDate) && isToday(toDate)) ||
+      (isPast(fromDate) && isFuture(toDate)) ||
+      (isPast(fromDate) && isToday(toDate))
+    ) {
       return "Em andamento";
     } else if (isPast(toDate)) {
       return "Finalizado";
