@@ -1,30 +1,68 @@
-# React + TypeScript + Vite
+<a name="readme-top"></a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <h1 align="center">AlugaAí</h1>
+</div>
 
-Currently, two official plugins are available:
+O AlugaAí é uma plataforma desenvolvida totalmente para estudo de React e TypeScript, focada em fornecer uma experiência de aluguel de veículos intuitiva e eficiente. Este projeto é uma jornada de aprendizado, onde cada linha de código representa um passo em direção ao domínio dessas poderosas tecnologias.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div align="center">
+    <img src="./.github/preview.png" alt="preview"> 
+</div>
 
-## Expanding the ESLint configuration
+### 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-- Configure the top-level `parserOptions` property like this:
+### 📚 Bibliotecas
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- [Date-fns](https://date-fns.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Router Dom](https://reactrouter.com/)
+- [Zod](https://zod.dev/)
+- [Phosphor Icons](https://phosphoricons.com/)
+
+### 🔧 Como Instalar e Executar
+
+Siga estas etapas para a execução no seu ambiente local:
+
+```bash
+# Clone o repositório
+$ git clone https://github.com/vctrhugoop/aluga-ai
+
+# Navegue até o diretório do projeto
+$ cd aluga-ai
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação
+$ yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Abra o navegador e acesse http://localhost:5173
+
+### 💻 Live Preview
+
+Confira a demonstração do projeto [aqui](https://alugaai.vercel.app/).
+
+### 🖇️ Contribuindo
+
+Estamos abertos a contribuições para tornar este aplicativo ainda mais incrível! Se você tiver sugestões de recursos, encontrar bugs ou quiser contribuir de outra forma, por favor, abra uma issue ou envie um pull request.
+
+### 📌 Feedback
+
+Adoraríamos ouvir sua opinião sobre o Awesome To-Do List App. Se você tiver algum feedback, sugestões ou problemas, sinta-se à vontade para abrir uma issue ou entrar em contato diretamente.
+
+### 📄 Licença
+
+Este projeto é licenciado sob a [Licença MIT](LICENSE.md),o que significa que você pode usá-lo, modificar e distribuir conforme desejar.
+
+---
+
+Feito com ♥ by [Victor Oliveira](https://github.com/vctrhugoop/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
