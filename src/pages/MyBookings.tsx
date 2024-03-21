@@ -198,7 +198,8 @@ export function MyBookings() {
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-end justify-between">
+                  <Separator />
+                  <div className="flex items-end justify-between ">
                     <h3 className="flex text-xl font-semibold leading-none tracking-tight">
                       Valor Total
                     </h3>
