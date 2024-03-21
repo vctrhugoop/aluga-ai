@@ -31,9 +31,9 @@ export function MyBookings() {
   return (
     <div className="mx-auto max-w-6xl">
       {bookingsCars.length <= 0 ? (
-        <div>
+        <section className="mx-auto max-w-6xl space-y-4 px-4 pb-48 pt-6">
           <p>Não há reservas de carros no momento.</p>
-        </div>
+        </section>
       ) : (
         <section className="mx-auto max-w-6xl space-y-4 px-4 pb-48 pt-6">
           <h1 className="text-xl font-bold">Minhas Reservas</h1>
