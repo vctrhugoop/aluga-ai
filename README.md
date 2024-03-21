@@ -6,9 +6,7 @@
 
 O AlugaAí é uma plataforma desenvolvida totalmente para estudo de React e TypeScript, focada em fornecer uma experiência de aluguel de veículos intuitiva e eficiente. Este projeto é uma jornada de aprendizado, onde cada linha de código representa um passo em direção ao domínio dessas poderosas tecnologias.
 
-<div align="center">
-    <img src="./.github/preview.png" alt="preview"> 
-</div>
+![preview](https://github.com/vctrhugoop/aluga-ai/assets/37374182/df53b52b-bb34-42a4-8173-9ac925ce334c)
 
 ### 🛠️ Tecnologias Utilizadas
 
