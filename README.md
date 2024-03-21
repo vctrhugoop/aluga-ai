@@ -55,7 +55,7 @@ Estamos abertos a contribuições para tornar este aplicativo ainda mais incrív
 
 ### 📌 Feedback
 
-Adoraríamos ouvir sua opinião sobre o Awesome To-Do List App. Se você tiver algum feedback, sugestões ou problemas, sinta-se à vontade para abrir uma issue ou entrar em contato diretamente.
+Adoraríamos ouvir sua opinião sobre o projeto. Se você tiver algum feedback, sugestões ou problemas, sinta-se à vontade para abrir uma issue ou entrar em contato diretamente.
 
 ### 📄 Licença
 
