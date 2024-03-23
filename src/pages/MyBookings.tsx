@@ -8,7 +8,13 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useBookingCar } from "@/hooks/useBooking";
 import { formatPrice } from "@/utils/formatPrice";
-import { Calendar, Car, Circle, User } from "@phosphor-icons/react";
+import {
+  Calendar,
+  Car,
+  Circle,
+  User,
+  WarningOctagon,
+} from "@phosphor-icons/react";
 import { format } from "date-fns";
 import { useEffect } from "react";
 
@@ -31,8 +37,11 @@ export function MyBookings() {
   return (
     <div className="mx-auto w-full max-w-6xl">
       {bookingsCars.length <= 0 ? (
-        <section className="mx-auto max-w-6xl space-y-4 px-4 pb-48 pt-6">
-          <p>Não há reservas de carros no momento.</p>
+        <section className="mx-auto grid h-96 max-w-6xl place-content-center place-items-center gap-8">
+          <WarningOctagon size={48} className="animate-pulse" />
+          <p className="text-muted-foreground">
+            Não há reservas de carros no momento.
+          </p>
         </section>
       ) : (
         <section className="mx-auto max-w-6xl space-y-4 px-4 pb-48 pt-6">
