@@ -239,6 +239,7 @@ export function FormBookings({ onSubmit }: FormBookingsProps) {
                       initialFocus
                       mode="range"
                       defaultMonth={field.value.from}
+                      locale={ptBR}
                       selected={{ from: field.value.from!, to: field.value.to }}
                       onSelect={field.onChange}
                       numberOfMonths={1}
