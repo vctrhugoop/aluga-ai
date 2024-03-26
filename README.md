@@ -22,6 +22,7 @@ O AlugaAí é uma plataforma desenvolvida totalmente para estudo de React e Type
 - [React Router Dom](https://reactrouter.com/)
 - [Zod](https://zod.dev/)
 - [Phosphor Icons](https://phosphoricons.com/)
+- [Shadcn/ui](https://ui.shadcn.com/)
 
 ### 🔧 Como Instalar e Executar
 
